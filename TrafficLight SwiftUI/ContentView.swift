@@ -7,13 +7,18 @@
 
 import SwiftUI
 
+enum Colors {
+    case red
+    case yellow
+    case green
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            ColorCircleView(color: .red, opacity: 1)
+            ColorCircleView(color: .yellow, opacity: 1)
+            ColorCircleView(color: .green, opacity: 1)
         }
         .padding()
     }
