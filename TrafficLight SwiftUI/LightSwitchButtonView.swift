@@ -16,9 +16,20 @@ struct LightSwitchButtonView: View {
     var body: some View {
         Button(action: action) {
             Text(title)
+                .font(.title)
+                .foregroundColor(.white)
         }
+        .padding()
+        .frame(width: 220, height: 55)
+        .background(.cyan)
+        .cornerRadius(20)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(.white, lineWidth: 2)
+        )
     }
 }
+
 
 struct LightSwitchButtonView_Previews: PreviewProvider {
     static var previews: some View {
