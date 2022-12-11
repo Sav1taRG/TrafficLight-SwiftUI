@@ -7,24 +7,37 @@
 
 import SwiftUI
 
-enum Colors {
+enum Light {
     case red
     case yellow
     case green
 }
 
-let lightIsOn = 1.0
-let lightIsOff = 0.3
-
 struct ContentView: View {
-    @State var buttonTitle = "Start"
     
-    @State var currentColor = Colors.red
-    @State var redOpacity = lightIsOff
-    @State var yellowOpacity = lightIsOff
-    @State var greenOpacity = lightIsOff
+    @State private var buttonTitle = "Start"
+    
+    @State private var currentColor = Light.red
+    @State private var redOpacity = 0.3
+    @State private var yellowOpacity = 0.3
+    @State private var greenOpacity = 0.3
+    
+    var body: some View {
+        VStack(spacing: 30) {
+            ColorCircleView(color: .red, opacity: redOpacity)
+                .padding(.top, 20)
+            ColorCircleView(color: .yellow, opacity: yellowOpacity)
+            ColorCircleView(color: .green, opacity: greenOpacity)
+            Spacer()
+            LightSwitchButtonView(title: buttonTitle, action: lightSwitch)
+                .padding(.bottom, 40)
+        }
+        .padding()
+    }
     
     private func lightSwitch() {
+        let lightIsOn = 1.0
+        let lightIsOff = 0.3
         
         if buttonTitle == "Start" {
             buttonTitle = "Next"
@@ -46,19 +59,6 @@ struct ContentView: View {
             redOpacity = lightIsOn
             currentColor = .red
         }
-    }
-  
-    var body: some View {
-        VStack(spacing: 30) {
-            ColorCircleView(color: .red, opacity: redOpacity)
-                .padding(.top, 20)
-            ColorCircleView(color: .yellow, opacity: yellowOpacity)
-            ColorCircleView(color: .green, opacity: greenOpacity)
-            Spacer()
-            LightSwitchButtonView(title: buttonTitle, action: lightSwitch)
-                .padding(.bottom, 40)
-        }
-        .padding()
     }
 }
 
